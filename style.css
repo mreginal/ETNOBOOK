@@ -43,7 +43,7 @@ nav{
     background-color: var(--cor7);
     justify-content: space-around;
     align-items: center;
-    height: 8vh;
+    height: 6vh;
     right: 0;
 }
 
@@ -84,7 +84,7 @@ nav a:hover{
     .nav-list{
         position: absolute;
         margin: 0;
-        top: 8vh;
+        top: 6vh;
         right: 0;
         width: 35vw;
         height: 92vh;
@@ -231,6 +231,10 @@ nav a:hover{
 }
 
 /*Parte referente ao corpo(conteúdo) da página*/
+
+.geral{
+    height: 100%;
+}
 
 .artigo{
     font-family: var(--fonte-textos);
