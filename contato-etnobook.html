@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
     <link rel="stylesheet" href="style.css">
     <script defer src="mobile-navbar.js"></script>
-    <title>Etnobook</title>
+    <title>Contatos-Etnobook</title>
 </head>
 <body>
-
     <header>
         <a class="logo" href="/"><img src="imagens/etb.png" alt="logo-etnobook"></a>
         <nav>
@@ -26,31 +25,21 @@
         </nav>
     </header>
 
-    <section class="login">
-        <div class="aba-login">
-            <h1>Login</h1>
-            <div class="dados">
-                <label for="usuario">E-MAIL:</label>
-                <input type="text" placeholder="exemplo@exemplo.com" required>
-            </div>
-            <div class="dados">
-                <label for="senha">SENHA:</label>
-                <input type="password" placeholder="*******" required>
-            </div>
-            <div class="botao">
-                <div class="botao-log">
-                    <input type="button" value="Entrar">
-                </div>
-                <div class="botao-log">
-                    <input type="button" value="Cadastrar">
-                </div>
-            </div>
-            <div class="botao-google">
-                <input type="button" value="Entrar com o google">
-            </div>
-            <div class="botao-reseta">
-                <a href="#">Esqueceu sua senha? </a>
-            </div>
+    <section class="artigo">
+        <h1>CONTATOS</h1>
+        <div class="top-contato">
+            <br>
+            <h2>Instituição operante</h2>
+            <p>SESI Dionísio Marques de Almeida - Patos, PB</p>
+            <h2>Horário de funcionamento</h2>
+            <p>8:00 às 11:00</p>
+        </div>
+        <div class="bottom-contato">
+            <input type="text" placeholder="*Nome" required>
+            <input type="text" placeholder="*E-mail" required>
+            <input type="text" placeholder="*Assunto" required>
+            <input type="text" id="caixa-mensagem"  placeholder="*Mensagem" required>
+            <div class="botao-enviar"><input type="button" value="Enviar"></div>
         </div>
     </section>
 

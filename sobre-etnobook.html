@@ -2,16 +2,30 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
     <link rel="stylesheet" href="style.css">
-    <title>Etnobook</title>
+    <script defer src="mobile-navbar.js"></script>
+    <title>Etnobook- Sobre</title>
 </head>
 <body>
     <header>
-        <div class="logo"><img src="imagens/etb.png" alt="logo"></div>
+        <a class="logo" href="/"><img src="imagens/etb.png" alt="logo-etnobook"></a>
+        <nav>
+          <div class="mobile-menu">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+          </div>
+          <ul class="nav-list">
+            <li><a href="/">Início</a></li>
+            <li><a href="sobre-etnobook.html">Sobre</a></li>
+            <li><a href="creditos-etnobook.html">Créditos</a></li>
+            <li><a href="contato-etnobook.html">Contatos</a></li>
+          </ul>
+        </nav>
     </header>
 
-    <section sobre>
+    <section class="sobre">
         <div class="artigo">
             <h1>SOBRE</h1>
             <div class="textos">
@@ -26,5 +40,6 @@
     <footer>
         <p>&copy;Todos os direitos reservados | Etnobook 2023</p>
     </footer>
+
 </body>
 </html>
