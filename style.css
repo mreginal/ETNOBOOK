@@ -25,6 +25,7 @@ body{
     background-color: var(--cor3);
     display: flex;
     flex-direction: column;
+    overflow-x: hidden;
 }
 
 header{
@@ -234,13 +235,13 @@ nav a:hover{
 
 .geral{
     height: 100%;
+    padding-bottom: 6rem;
 }
 
 .artigo{
     font-family: var(--fonte-textos);
     justify-content: center;
     text-align:justify;
-    padding-bottom: 1rem;
 }
 
 .artigo > h1{
@@ -253,7 +254,7 @@ nav a:hover{
 
 .textos{
     padding: 0px 15px;
-    font-size: 10px;
+    font-size: 14px;
 }
 .textos > h2{
     font-family: var(--fonte-geral);
@@ -340,4 +341,5 @@ footer{
     position: relative;
     bottom: 0;
     margin-bottom: 0px;
+    margin-top: 150px;
 }
