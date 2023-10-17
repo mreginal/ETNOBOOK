@@ -140,7 +140,7 @@ nav a{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    height: 80vh;
 }
 
 .aba-login{
@@ -203,21 +203,9 @@ nav a{
 }
 
 .botao-google{
-    text-align: center;
-    margin: 10px 10px 2px 10px;
-}
-
-.botao-google > input{
-    background-color: var(--cor6);
-    font-family: var(--fonte-geral);
-    font-size: 12px;
-    font-weight: bolder;
-    border-radius: 9px;
-    border: none;
-    outline: none;
-    box-sizing: border-box;
-    width: 200px;
-    height: 30px;
+    display: flex;
+    justify-content: center;
+    padding: 10px 15px 0px;
 }
 
 .botao-reseta{

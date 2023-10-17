@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
     <link rel="stylesheet" href="style.css">
     <script defer src="mobile-navbar.js"></script>
+    <script src="login-google.js"></script>
+    <script src="https://accounts.google.com/gsi/client" async></script>
+    <script src="https://unpkg.com/jwt-decode/build/jwt-decode.js"></script>
     <title>Etnobook</title>
 </head>
 <body>
@@ -44,9 +47,7 @@
                         <input type="button" value="Cadastrar">
                     </div>
                 </div>
-                <div class="botao-google">
-                    <input type="button" value="Entrar com o google">
-                </div>
+                <div class="botao-google" id="buttonDiv"></div>
                 <div class="botao-reseta">
                     <a href="#">Esqueceu sua senha? </a>
                 </div>
