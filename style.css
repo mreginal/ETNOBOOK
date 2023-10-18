@@ -188,7 +188,21 @@ nav a{
     margin-inline: 5px;
 }
 
-.botao-log > input{
+.botao-log > input {
+    background-color: var(--cor7);
+    font-family: var(--fonte-geral);
+    font-size: 12px;
+    color: var(--cor1);
+    font-weight: bolder;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    height: 30px;
+    width: 95px;
+    display: inline-block;
+}
+
+.botao-log > a > input{
     background-color: var(--cor7);
     font-family: var(--fonte-geral);
     font-size: 12px;
