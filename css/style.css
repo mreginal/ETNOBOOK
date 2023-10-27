@@ -97,7 +97,7 @@ nav a{
     .nav-list{
         position: absolute;
         margin: 0;
-        top: 8vh;
+        top: 6.5vh;
         right: 0;
         width: 35vw;
         background: var(--cor7);

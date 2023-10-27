@@ -94,7 +94,7 @@ nav a{
     .nav-list{
         position: absolute;
         margin: 0;
-        top: 8vh;
+        top: 6.5vh;
         right: 0;
         width: 35vw;
         background: var(--cor7);
@@ -141,6 +141,63 @@ nav a{
         transform: rotate(45deg) translate(-5px, -7px);
     }
 }
+
+/*Parte referente ao filtro de busca*/
+
+.artigo h2{
+    margin: 5px 5px 0px 5px;
+    font-size: 14px;
+    padding: 0px 10px;
+}
+
+.top-busca{
+    background-color: var(--cor2);
+    padding: 15px;
+    border-radius: 8px;
+    margin: 5px;
+    font-size: 12px;
+    font-weight: bolder;
+}
+
+.itens-busca{
+    display: inline-flex;
+}
+
+.item{
+    flex-direction: column;
+    justify-content: center;
+}
+
+.itens-busca input{
+    width: 120px;
+    border: none;
+    padding: 6px;
+    border-radius: 6px;
+}
+
+.buscar{
+    width: 100%;
+    display: inline-flex;
+    justify-content: end;
+    margin-top: 5px;
+}
+
+.buscar button{
+    background-color: var(--cor7);
+    color: var(--cor1);
+    padding: 5px;
+    border: none;
+    border-radius: 6px;
+}
+
+.bottom-busca{
+    background-color: var(--cor4);
+    font-size: 12px;
+    padding: 5px;
+    margin: 5px;
+}
+
+
 
 /*Parte referente a tela de cards*/
 @media (max-width:500px){
