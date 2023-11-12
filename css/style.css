@@ -397,9 +397,9 @@ nav a{
 
 }
 
-/*Parte referente ao perfil */
+/*Parte referente ao perfil e plantas*/
 
-.card-perfil{
+.card-pp{
     background-color: var(--cor2);
     border-radius: 20px;
     margin: 25px;
@@ -408,7 +408,7 @@ nav a{
     align-items: center;
     line-height: 0px;
 }
-.barra-pf{
+.barra-pp{
     display: flex;
     flex-direction: column;
     margin: 0px;
@@ -417,13 +417,19 @@ nav a{
     align-items: center;
     border-radius: 20px 20px 0px 20px;
 }
-.foto-pf img{
+.foto-pp img{
     margin: 10px;
     height: 100px;
     width: 100px;
 }
+.foto-planta img{
+    margin: 20px 10px 10px 10px;
+    border-radius: 20px;
+    height: 200px;
+    width: 200px;
+}
 
-.nome-pf{
+.nome-pp{
     font-family: var(--fonte-geral);
     font-weight: 100;
     color: var(--cor1);
@@ -438,6 +444,41 @@ nav a{
 .opcoes a{
     text-decoration: none;
     color: var(--cor8);
+}
+
+.info{
+    margin: 10px;
+    width: 95%;
+    font-family: var(--fonte-geral);
+    display: flex;
+    align-items: center;
+}
+
+.infos h4{
+    font-weight: bolder;
+}
+
+.infos p{
+    color: rgba(0, 0, 0, 0.605);
+    font-size: 14px;
+    padding-left: 10px;
+    line-height: 20px;
+}
+.info-descricao{
+    padding: 0px 10px;
+    text-align: justify;
+    font-family:var(--fonte-geral) ;
+}
+.info-artigos{
+    margin: 10px;
+    width: 95%;
+    font-family: var(--fonte-geral);
+}
+
+.links-artigos li a{
+    line-height: 20px;
+    text-decoration: none;
+    color: var(--cor7);
 }
 
 .fixar-rodape{
