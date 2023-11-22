@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <!--CSS-->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <title>Login- Etnobook</title>
+</head>
+<body>
+    <div class="body-content">
+        <header>
+            <a class="logo" href="main.html"><img src="..\imagens/etb.png" alt="logo-etnobook"></a>
+            <nav>
+                <div class="mobile-menu">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+              </div>
+              <ul class="nav-list">
+                <li><a href="login.html">Login</a></li>
+                <li><a href="sobre-etnobook.html">Sobre</a></li>
+                <li><a href="creditos-etnobook.html">Créditos</a></li>
+                <li><a href="contato-etnobook.html">Contatos</a></li>
+              </ul>
+            </nav>
+        </header>
+        <section class="login">
+            <div class="aba-login">
+                <h1>Login</h1>
+                <div class="dados">
+                    <label for="usuario">E-MAIL:</label>
+                    <input type="text" placeholder="exemplo@exemplo.com" id="email" required>
+                </div>
+                <div class="dados">
+                    <label for="senha">SENHA:</label>
+                    <input type="password" placeholder="*******" id="password" required>
+                </div>
+                <div class="botao">
+                    <div class="botao-log">
+                        <input type="button" value="Login" onclick="loginUser()">
+                    </div>
+                    <div class="botao-log">
+                        <a href="cadastrar-etnobook.html"><input type="button" value="Cadastrar"></a>
+                    </div>
+                </div>
+                <div class="botao-google" id="buttonDiv"></div>
+                <div class="botao-reseta">
+                    <a href="#">Esqueceu sua senha? </a>
+                </div>
+            </div>
+        </section>
+        <footer class="fixar-rodape">
+            <p>&copy;Todos os direitos reservados | Etnobook 2023</p>
+        </footer>
+    </div>
+
+    <!--JS-->
+    <script defer src="../javascript/mobile-navbar.js"></script>
+    <script src="../javascript/login-google.js"></script>
+    <script src="https://accounts.google.com/gsi/client" async></script>
+    <script src="https://unpkg.com/jwt-decode/build/jwt-decode.js"></script>
+    <script src ="../javascript/logarUser.js"></script>
+    
+</body>
+</html>

@@ -1,0 +1,32 @@
+obterDadosDaAPI();
+    // Iterar sobre os dados usando forEach
+    plantas.forEach(function (planta) {
+        console.log(plantas.nomecientifico)
+
+
+        const divPlanta = document.createElement('div');
+        divPlanta.className = body-content
+        divPlanta.setAttribute("data-id", planta.id)
+
+        const nome_cientifico = document.createElement('p');
+        nome_cientifico.className = nome_cientifico
+        nome_cientifico.textContent("planta.nomecientifico")
+
+        const descricao_planta = document.createElement('p');
+        descricao_planta.className = descricao_planta
+        descricao_planta.textContent("planta.descricao")
+
+        const planta_popular = document.createElement('h5');
+        planta_popular.className = planta_popular
+        planta_popular.textContent("planta.popular")
+
+        
+        //const imgPlanta = document.createElement('img');
+        //imgPlanta.className = img_planta
+        //imgPlanta.src = //link para as imagens
+
+        divPlanta.appendChild(nome_cientifico);
+        divPlanta.appendChild(descricao_planta);
+        divPlanta.appendChild(planta_popular);
+
+    });

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <!--CSS-->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="../css/main.css">
+
+    <title>Etnobook</title>
+</head>
+<body>    
+    <header>
+        <a class="logo" href="main.html"><img src="../imagens/etb.png" alt="logo-etnobook"></a>
+        <nav>
+            <div class="logo-perfil"><a href="perfil.html"><img src="../imagens/perfil.png" alt="logo-perfil"></a></div>
+            <div class="mobile-menu">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+          </div>
+          <ul class="nav-list">
+            <li><a href="login.html">Login</a></li>
+            <li><a href="sobre-etnobook.html">Sobre</a></li>
+            <li><a href="creditos-etnobook.html">Créditos</a></li>
+            <li><a href="contato-etnobook.html">Contatos</a></li>
+          </ul>
+        </nav>
+    </header>
+
+    <div class="card">
+        <div class="pesquisar">
+            <input type="text" name="pesquisa" placeholder="Digite sua busca" autocomplete="off">
+            <button><a href="filtro-busca.html"><img src="../imagens/busca.png" alt="lupa"></a></button>
+        </div>
+    </div>
+
+    <div id = "swiper-main"class="swiper-container">
+        <div class="swiper-wrapper">
+          <!-- Slides do Swiper serão adicionados aqui dinamicamente -->
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+    
+    <footer class="fixar-rodape">
+        <p>&copy;Todos os direitos reservados | Etnobook 2023</p>
+    </footer>
+
+    <!--JS-->
+    <script defer src="../javascript/mobile-navbar.js"></script>
+    <script src="../javascript/main.js" defer></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    
+
+</body>
+</html>
