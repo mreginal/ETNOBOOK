@@ -92,57 +92,54 @@ nav a{
     transition: 0.3s;
 }
 
-@media (max-width: 999px){
+.nav-list{
+    position: absolute;
+    margin: 0;
+    top: 6.5vh;
+    right: 0;
+    width: 35vw;
+    background: var(--cor7);
+    flex-direction: column;
+    align-items:start;
+    line-height: 10vh;
+    padding: 10px;
+    transform:translateX(100%);
+    transition: transform 0.3s ease-in;
+}
 
-    .nav-list{
-        position: absolute;
-        margin: 0;
-        top: 6.5vh;
-        right: 0;
-        width: 35vw;
-        background: var(--cor7);
-        flex-direction: column;
-        align-items:start;
-        line-height: 10vh;
-        padding: 10px;
-        transform:translateX(100%);
-        transition: transform 0.3s ease-in;
-    }
+.nav-list li{
+    margin-left: 0;
+    opacity: 0;
+}
 
-    .nav-list li{
-        margin-left: 0;
+.mobile-menu{
+    display: block;
+}
+
+.nav-list.active{
+    transform: translateX(0);
+}
+
+@keyframes navLinkFade {
+    from {
         opacity: 0;
-    }
-
-    .mobile-menu{
-        display: block;
-    }
-
-    .nav-list.active{
+        transform: translateX(50px);
+    } to{
+        opacity: 1;
         transform: translateX(0);
     }
+}
 
-    @keyframes navLinkFade {
-        from {
-            opacity: 0;
-            transform: translateX(50px);
-        } to{
-            opacity: 1;
-            transform: translateX(0);
-        }
-    }
-
-    .mobile-menu.active .line1 {
-        transform: rotate(-45deg) translate(-8px, 8px);
-    }
-      
-    .mobile-menu.active .line2 {
-        opacity: 0;
-    }
-      
-    .mobile-menu.active .line3 {
-        transform: rotate(45deg) translate(-5px, -7px);
-    }
+.mobile-menu.active .line1 {
+    transform: rotate(-45deg) translate(-8px, 8px);
+}
+    
+.mobile-menu.active .line2 {
+    opacity: 0;
+}
+    
+.mobile-menu.active .line3 {
+    transform: rotate(45deg) translate(-5px, -7px);
 }
 
 /*Parte referente a tela de login*/

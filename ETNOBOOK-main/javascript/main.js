@@ -10,12 +10,31 @@ function obterDadosDaAPI() {
         });
 }
 
+
 function redirecionarParaPaginaDetalhada(planta) {
     // Cria elementos HTML para exibir detalhes da planta
+
+    const header = document.createElement('header');
 
     const detalhesContainer = document.createElement('div');
     detalhesContainer.className = 'detalhes-container';
 
+    const informacoesContainer = document.createElement('div');
+    informacoesContainer.className = 'info-container';
+
+    const imagemContainer = document.createElement('div');
+    imagemContainer.className = 'img-container';
+
+    detalhesContainer.appendChild(informacoesContainer);
+    detalhesContainer.appendChild(imagemContainer);
+
+    //Adiciona os elementos no header
+    const logo = document.createElement('img');
+    logo.className = 'logo';
+    const caminhoDaImagem = '../imagens/etb.png';
+    logo.src = caminhoDaImagem; 
+
+    //Adiciona os elementos na div informacoesContainer
     const nomePopular = document.createElement('h1');
     nomePopular.className = 'nome-popular';
     nomePopular.textContent = `Nome: ${planta.nome}`;
@@ -28,9 +47,18 @@ function redirecionarParaPaginaDetalhada(planta) {
     descricao.className = 'descricao';
     descricao.textContent = `Descrição: ${planta.descricao}`;
 
+    //Adiciona a imagem
     const img = document.createElement('img');
     img.className = 'img_planta';
     img.src = planta.imagem; // Assumindo que planta.nomeImagem é a URL da imagem
+
+    // Adiciona o footer da página
+    const footer = document.createElement('footer');
+    footer.className = 'fixar-rodape';
+
+    const copyright = document.createElement('p');
+    copyright.innerHTML = `&copy; Todos os direitos reservados | Etnobook 2023`;
+    footer.appendChild(copyright);
 
     // Adiciona o texto "Artigos:" antes da lista de artigos
     const textoArtigos = document.createElement('p');
@@ -61,15 +89,22 @@ function redirecionarParaPaginaDetalhada(planta) {
         detalhesContainer.appendChild(paragrafo);
     }
 
-    // Adiciona os elementos ao container
-    detalhesContainer.appendChild(nomePopular);
-    detalhesContainer.appendChild(nomeCientifico);
-    detalhesContainer.appendChild(descricao);
-    detalhesContainer.appendChild(img)
+    // Adiciona os elementos
+    header.appendChild(logo);
+    informacoesContainer.appendChild(nomePopular);
+    informacoesContainer.appendChild(nomeCientifico);
+    informacoesContainer.appendChild(descricao);
+    imagemContainer.appendChild(img)
 
     // Adiciona o container à página
     document.body.innerHTML = '';
-    document.body.appendChild(detalhesContainer);
+    document.body.insertBefore(detalhesContainer, document.body.lastChild);
+
+    // Adiciona o header à página
+    document.body.insertBefore(header,document.body.firstChild);
+
+    // Adiciona o footer à página
+    document.body.insertBefore(footer, document.body.lastChild);
 }
 
 document.addEventListener('DOMContentLoaded', function () {
