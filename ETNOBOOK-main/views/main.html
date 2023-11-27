@@ -21,7 +21,6 @@
             <div class="line3"></div>
           </div>
           <ul class="nav-list">
-            <li><a href="login.html">Login</a></li>
             <li><a href="sobre-etnobook.html">Sobre</a></li>
             <li><a href="creditos-etnobook.html">Créditos</a></li>
             <li><a href="contato-etnobook.html">Contatos</a></li>
@@ -31,8 +30,8 @@
 
     <div class="card">
         <div class="pesquisar">
-            <input type="text" name="pesquisa" placeholder="Digite sua busca" autocomplete="off">
-            <button><a href="filtro-busca.html"><img src="../imagens/busca.png" alt="lupa"></a></button>
+            <input type="text" name="pesquisa" placeholder="Digite sua busca" autocomplete="on" id="busca_filtro">
+            <button id="busca"><img src="../imagens/busca.png" alt="lupa" onclick="buscarPersonalizada()"></button>
         </div>
     </div>
 
@@ -51,6 +50,9 @@
     <script defer src="../javascript/mobile-navbar.js"></script>
     <script src="../javascript/main.js" defer></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src ="../javascript/filtro.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode@latest/build/jwt-decode.js"></script>
+
     
 
 </body>

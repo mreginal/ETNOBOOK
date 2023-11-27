@@ -1,8 +1,8 @@
-import { createService, findAllService, findByNomeService, updateService } from '../services/plantas.service.js'
+import { createService, findAllService, updateService, findByFilterService } from '../services/plantas.service.js'
 
 const create = async (req, res) => {
     try {
-        const { nome, nomecientifico, descricao, artigo } = req.body
+        const { nome, nomecientifico, descricao, artigo, imagem } = req.body
 
         if (!nome || !nomecientifico) {
             return res.status(400).send({ message: "Informe todos os campos obrigatorios para registro" })
@@ -12,7 +12,8 @@ const create = async (req, res) => {
             nome,
             nomecientifico,
             descricao,
-            artigo
+            artigo,
+            imagem
         })
 
         if (!planta) {
@@ -22,10 +23,11 @@ const create = async (req, res) => {
         res.status(201).send({
             message: "Planta registrada com sucesso",
             planta: {
-            nome,
-            nomecientifico,
-            descricao,
-            artigo
+                nome,
+                nomecientifico,
+                descricao,
+                artigo,
+                imagem
             },
         })
     } catch (err) {
@@ -38,7 +40,7 @@ const findAll = async (req, res) => {
         const plantas = await findAllService()
 
         if (plantas.length === 0) {
-            return res.status(400).send({ message: "Não há usuarios cadastrados" })
+            return res.status(400).send({ message: "Não há plantas cadastrados" })
         }
 
         res.send(plantas)
@@ -47,9 +49,9 @@ const findAll = async (req, res) => {
     }
 }
 
-const findByNome = async (req, res) => {
+const findByNome = (req, res) => {
     try {
-        const planta =  req.planta
+        const planta = req.planta
 
         res.send(planta)
     } catch (error) {
@@ -57,19 +59,38 @@ const findByNome = async (req, res) => {
     }
 }
 
+const findByFilter = async (req, res) => {
+    try {
+        const { nome } = req.body
+
+        if (!nome) {
+            return res.status(400).send({ message: "Informe um nome a ser filtrado" })
+        }
+
+        const plantasFiltradas = await findByFilterService(nome)
+
+        res.send(plantasFiltradas)
+    } catch (err) {
+        res.status(500).send({ message: err.message })
+    }
+}
+
 const update = async (req, res) => {
     try {
-        const { nome, nomecientifico, descricao, artigo } = req.body
+        const tempnome = req.params.nomecientifico
+        const { nome, nomecientifico, descricao, artigo, imagem } = req.body
 
-        if (!nome && !nomecientifico && !descricao && !artigo) {
+        if (!nome && !nomecientifico && !descricao && !artigo && !imagem) {
             return res.status(400).send({ message: "Informe pelo menos um campo para atualização" })
         }
 
         await updateService(
             nome,
             nomecientifico,
+            tempnome,
             descricao,
-            artigo
+            artigo,
+            imagem
         )
 
         res.send({ message: "Planta atualizada com sucesso!" })
@@ -78,4 +99,4 @@ const update = async (req, res) => {
     }
 }
 
-export { create, findAll, update, findByNome }
+export { create, findAll, update, findByNome, findByFilter }

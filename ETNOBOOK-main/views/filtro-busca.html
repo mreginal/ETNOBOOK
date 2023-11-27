@@ -15,59 +15,50 @@
             <nav>
                 <div class="logo-perfil"><a href="perfil.html"><img src="../imagens/perfil.png" alt="logo-perfil"></a></div>
                 <div class="mobile-menu">
-                <div class="line1"></div>
-                <div class="line2"></div>
-                <div class="line3"></div>
-              </div>
-              <ul class="nav-list">
-                <li><a href="login.html">Login</a></li>
-                <li><a href="sobre-etnobook.html">Sobre</a></li>
-                <li><a href="creditos-etnobook.html">Créditos</a></li>
-                <li><a href="contato-etnobook.html">Contatos</a></li>
-              </ul>
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
+                <ul class="nav-list">
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="sobre-etnobook.html">Sobre</a></li>
+                    <li><a href="creditos-etnobook.html">Créditos</a></li>
+                    <li><a href="contato-etnobook.html">Contatos</a></li>
+                </ul>
             </nav>
         </header>
         <section class="geral">
-                <div class="artigo">
-                    <h2>Filtro:</h2>
+            <div class="artigo">
+                <h2>Filtro:</h2>
                 <div class="top-busca">
                     <div class="itens-busca">
                         <div class="item">
-                            <label for="">Palavra-chave:</label>
-                            <input type="text" placeholder="Ex: Babosa">
+                            <label for="searchInput">Palavra-chave:</label>
+                            <input type="text" id="searchInput" placeholder="Ex: Babosa">
                         </div>
                         <div class="item">
-                            <label for="">Tipo:</label>
-                            <input type="text" placeholder="Ex:Todos">
+                            <label for="tipoInput">Tipo:</label>
+                            <input type="text" id="tipoInput" placeholder="Ex: Todos">
                         </div>
                     </div>
                     <div class="buscar">
-                        <button>Buscar</button>
+                        <button onclick="fetchData()">Buscar</button>
                     </div>
                 </div>
                 <h2>Resultados:</h2>
-                <div class="bottom-busca">
-                    <div class="resultados">
-                        <div class="nome-cien">
-                            <h3>Nome científico:</h3>
-                        </div>
-                        <div class="nome-pop">
-                            <h3>Nome popular:</h3>
-                        </div>
-                        <div class="problemas">
-                            <h3>Problemas que trata:</h3>
-                        </div>
-                    </div>
+                <!-- Adicionando a div com ID "itemList" para os resultados da API -->
+                <div id="itemList" class="bottom-busca resultados">
+                    <!-- Os resultados serão adicionados aqui dinamicamente -->
                 </div>
             </div>
         </section>
         <footer class="fixar-rodape">
-            <p>&copy;Todos os direitos reservados | Etnobook 2023</p>
+            <p>&copy; Todos os direitos reservados | Etnobook 2023</p>
         </footer>
     </div>
 
     <!--JS-->
     <script defer src="../javascript/mobile-navbar.js"></script>
-
+    <script src="../javascript/filtro.js"></script>
 </body>
 </html>

@@ -37,7 +37,7 @@ export const validUser = async (req, res, next) => {
 
 export const validPlanta = async (req, res, next) => {
     try {
-        const nomecientifico = req.params.nomecientifico
+        const { nomecientifico }  = req.body
 
         const planta = await findByNomeService(nomecientifico)
 
@@ -52,4 +52,23 @@ export const validPlanta = async (req, res, next) => {
         res.status(500).send({ message: err.message })
     }
 
+
+}
+
+export const confirmPlanta = async (req, res, next) => {
+    try {
+        const nomecientifico   = req.params.nomecientifico
+
+        const planta = await findByNomeService(nomecientifico)
+
+        if (!planta) {
+            return res.status(400).send({ message: "Planta não encontrada!" })
+        }
+
+        req.planta = planta
+
+        next()
+    } catch (err) {
+        res.status(500).send({ message: err.message })
+    }
 }

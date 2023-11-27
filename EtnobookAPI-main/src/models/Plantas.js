@@ -15,6 +15,9 @@ const PlantasSchema = new mongoose.Schema({
     },
     artigo: {
         type: Array
+    },
+    imagem: {
+        type: String
     }
 })
 

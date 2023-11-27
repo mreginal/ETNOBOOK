@@ -1,174 +1,236 @@
+document.addEventListener('DOMContentLoaded', function () {
+    const jwtToken = JSON.parse(localStorage.getItem('jwtToken'));
+    
+});
+
 const apiUrl = 'https://etnobook-api.onrender.com/plantas';
 
-function obterDadosDaAPI() {
-    console.log("teste");
-    return fetch(apiUrl)
-        .then(response => response.json())
-        .catch(error => {
-            console.error('Erro ao obter dados da API:', error);
-            throw error;
-        });
+async function obterDadosDaAPI() {
+    try {
+        const response = await fetch(apiUrl);
+        if (!response.ok) {
+            throw new Error('Erro ao obter dados da API');
+        }
+        return response.json();
+    } catch (error) {
+        console.error('Erro ao obter dados da API:', error);
+        throw error;
+    }
+}
+
+function redirecionarParaPaginaDetalhada(planta) {
+    // Verifica se o token JWT está presente
+    const jwtToken = JSON.parse(localStorage.getItem('jwtToken'));
+    if (!jwtToken) {
+    // Se o token não estiver presente, exibe um alerta e redireciona para a página de login
+    window.alert('Você precisa estar logado para acessar esta página. Você será redirecionado para a página de login.');
+    window.location.href = '../views/login.html';
+    return;
+}
+
+    // Cria elementos HTML para exibir detalhes da planta
+    const header = criarElementoHeader();
+    const detalhesContainer = criarElementoDetalhes(planta);
+    
+    document.body.innerHTML = '';
+    document.body.appendChild(header);
+    document.body.appendChild(detalhesContainer);
 }
 
 
-function redirecionarParaPaginaDetalhada(planta) {
-    // Cria elementos HTML para exibir detalhes da planta
-
+function criarElementoHeader() {
     const header = document.createElement('header');
+    const logo = criarElementoLogo();
 
+    header.appendChild(logo);
+
+    return header;
+}
+
+function criarElementoLogo() {
+    const logo = document.createElement('img');
+    logo.className = 'logo';
+    logo.src = '../imagens/etb.png';
+
+    // Redirecionando para home ao clicar na logo do app
+    logo.addEventListener('click', function () {
+        window.location.href = '../views/main.html';
+    });
+
+    return logo;
+}
+
+function criarElementoDetalhes(planta) {
     const detalhesContainer = document.createElement('div');
     detalhesContainer.className = 'detalhes-container';
 
-    const informacoesContainer = document.createElement('div');
-    informacoesContainer.className = 'info-container';
-
-    const imagemContainer = document.createElement('div');
-    imagemContainer.className = 'img-container';
+    const informacoesContainer = criarElementoInformacoes(planta);
+    const imagemContainer = criarElementoImagem(planta);
+    const footer = criarElementoFooter();
 
     detalhesContainer.appendChild(informacoesContainer);
     detalhesContainer.appendChild(imagemContainer);
+    detalhesContainer.appendChild(footer);
 
-    //Adiciona os elementos no header
-    const logo = document.createElement('img');
-    logo.className = 'logo';
-    const caminhoDaImagem = '../imagens/etb.png';
-    logo.src = caminhoDaImagem; 
+    return detalhesContainer;
+}
 
-    //Adiciona os elementos na div informacoesContainer
-    const nomePopular = document.createElement('h1');
-    nomePopular.className = 'nome-popular';
-    nomePopular.textContent = `Nome: ${planta.nome}`;
+function criarElementoInformacoes(planta) {
+    const informacoesContainer = document.createElement('div');
+    informacoesContainer.className = 'info-container';
 
-    const nomeCientifico = document.createElement('h2');
-    nomeCientifico.className = 'nome_cientifico';
-    nomeCientifico.textContent = `Nome Científico: ${planta.nomecientifico}`;
+    const nomePopular = criarElementoComTexto('h1', 'nome-popular', `Nome: ${planta.nome}`);
+    const nomeCientifico = criarElementoComTexto('h2', 'nome_cientifico', `Nome Científico: ${planta.nomecientifico}`);
+    const descricao = criarElementoComTexto('p', 'descricao', `Descrição: ${planta.descricao}`);
 
-    const descricao = document.createElement('p');
-    descricao.className = 'descricao';
-    descricao.textContent = `Descrição: ${planta.descricao}`;
-
-    //Adiciona a imagem
-    const img = document.createElement('img');
-    img.className = 'img_planta';
-    img.src = planta.imagem; // Assumindo que planta.nomeImagem é a URL da imagem
-
-    // Adiciona o footer da página
-    const footer = document.createElement('footer');
-    footer.className = 'fixar-rodape';
-
-    const copyright = document.createElement('p');
-    copyright.innerHTML = `&copy; Todos os direitos reservados | Etnobook 2023`;
-    footer.appendChild(copyright);
-
-    // Adiciona o texto "Artigos:" antes da lista de artigos
-    const textoArtigos = document.createElement('p');
-    textoArtigos.textContent = 'Artigos:';
-    detalhesContainer.appendChild(textoArtigos);
-
-    // Cria um elemento de âncora para o primeiro artigo
-    const primeiroLinkArtigos = document.createElement('a');
-    primeiroLinkArtigos.textContent = `Artigo 1`;
-    primeiroLinkArtigos.setAttribute('href', planta.artigo[0]);
-    primeiroLinkArtigos.setAttribute('target', '_blank'); // Abre em uma nova aba/janela
-
-    // Adiciona o primeiro link à mesma linha que a palavra "Artigos"
-    textoArtigos.appendChild(primeiroLinkArtigos);
-
-    // Itera sobre os artigos, começando do segundo artigo
-    for (let i = 1; i < planta.artigo.length; i++) {
-        const linkArtigos = document.createElement('a');
-        linkArtigos.textContent = `Artigo ${i + 1}`;
-        linkArtigos.setAttribute('href', planta.artigo[i]);
-        linkArtigos.setAttribute('target', '_blank'); // Abre em uma nova aba/janela
-
-        // Cria um elemento de bloco (parágrafo) para envolver cada link de artigo
-        const paragrafo = document.createElement('p');
-        paragrafo.appendChild(linkArtigos);
-
-        // Adiciona o elemento de bloco ao detalhesContainer
-        detalhesContainer.appendChild(paragrafo);
-    }
-
-    // Adiciona os elementos
-    header.appendChild(logo);
     informacoesContainer.appendChild(nomePopular);
     informacoesContainer.appendChild(nomeCientifico);
     informacoesContainer.appendChild(descricao);
-    imagemContainer.appendChild(img)
 
-    // Adiciona o container à página
-    document.body.innerHTML = '';
-    document.body.insertBefore(detalhesContainer, document.body.lastChild);
+    const artigos = criarElementoArtigos(planta.artigo);
+    informacoesContainer.appendChild(artigos);
 
-    // Adiciona o header à página
-    document.body.insertBefore(header,document.body.firstChild);
-
-    // Adiciona o footer à página
-    document.body.insertBefore(footer, document.body.lastChild);
+    return informacoesContainer;
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-    obterDadosDaAPI()
-        .then(function (plantas) {
-            const elementosSwiper = criarElementosSwiper(plantas);
-            const swiperWrapper = document.querySelector('.swiper-wrapper');
+function criarElementoArtigos(artigos) {
+    const textoArtigos = document.createElement('p');
+    textoArtigos.textContent = 'Artigos:';
 
-            elementosSwiper.forEach(function (elemento, index) {
-                swiperWrapper.appendChild(elemento);
+    const linksArtigos = artigos.map((artigo, index) => {
+        const link = document.createElement('a');
+        link.textContent = `Artigo ${index + 1}`;
+        link.setAttribute('href', artigo);
+        link.setAttribute('target', '_blank');
 
-                // Adiciona evento de clique a cada div com a classe 'swiper-slide'
-                elemento.addEventListener('click', function () {
-                    // Lógica de redirecionamento aqui
-                    console.log(`Clicou na planta: ${plantas[index].nomecientifico}`);
-                    redirecionarParaPaginaDetalhada(plantas[index]);
-                });
-            });
+        return link;
+    });
 
-            // Inicializa o Swiper após adicionar os elementos
-            const swiper = new Swiper("#swiper-main", {
-                slidesPerView: 2,
-                spaceBetween: 30,
-                pagination: {
-                    el: ".swiper-pagination",
-                    clickable: true,
-                },
-            });
-        })
-        .catch(function (error) {
-            console.error('Erro ao processar dados:', error);
+    textoArtigos.append(...linksArtigos);
+
+    return textoArtigos;
+}
+
+function criarElementoImagem(planta) {
+    const imagemContainer = document.createElement('div');
+    imagemContainer.className = 'img-container';
+
+    const img = document.createElement('img');
+    img.className = 'img_planta';
+    img.src = planta.imagem;
+
+    imagemContainer.appendChild(img);
+
+    return imagemContainer;
+}
+
+function criarElementoFooter() {
+    const footer = document.createElement('footer');
+    footer.className = 'fixar-rodape';
+
+    const copyright = criarElementoComTexto('p', null, `&copy; Todos os direitos reservados | Etnobook 2023`);
+    footer.appendChild(copyright);
+
+    return footer;
+}
+
+function criarElementoComTexto(tag, className, textContent) {
+    const elemento = document.createElement(tag);
+    if (className) {
+        elemento.className = className;
+    }
+    elemento.textContent = textContent;
+
+    return elemento;
+}
+
+document.addEventListener('DOMContentLoaded', async function () {
+    try {
+        const plantas = await obterDadosDaAPI();
+        const elementosSwiper = criarElementosSwiper(plantas);
+
+        const swiperWrapper = document.querySelector('.swiper-wrapper');
+        elementosSwiper.forEach((elemento, index) => {
+            swiperWrapper.appendChild(elemento);
+            elemento.addEventListener('click', () => redirecionarParaPaginaDetalhada(plantas[index]));
         });
+
+        const swiper = new Swiper("#swiper-main", {
+            slidesPerView: 2,
+            spaceBetween: 30,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+        });
+    } catch (error) {
+        console.error('Erro ao processar dados:', error);
+    }
 });
 
 function criarElementosSwiper(plantas) {
-    const elementosSwiper = [];
+    return plantas.map(criarElementoSwiper);
+}
 
-    plantas.forEach(function (planta) {
-        const divPlanta = document.createElement('div');
-        divPlanta.className = 'swiper-slide';
-        divPlanta.setAttribute('data-id', planta.nomecientifico);
+function criarElementoSwiper(planta) {
+    const divPlanta = document.createElement('div');
+    divPlanta.className = 'swiper-slide';
+    divPlanta.setAttribute('data-id', planta.nomecientifico);
 
-        const nome_cientifico = document.createElement('p');
-        nome_cientifico.className = 'nome_cientifico';
-        nome_cientifico.textContent = planta.nomecientifico;
+    const nomeCientifico = criarElementoComTexto('p', 'nome_cientifico', planta.nomecientifico);
+    const descricaoPlanta = criarElementoComTexto('p', 'descricao_planta', planta.descricao);
+    const nomePopular = criarElementoComTexto('h1', 'nome_popular', planta.nome);
+    const img = criarElementoImagem(planta);
 
-        const descricao_planta = document.createElement('p');
-        descricao_planta.className = 'descricao_planta';
-        descricao_planta.textContent = planta.descricao;
+    divPlanta.appendChild(nomeCientifico);
+    divPlanta.appendChild(descricaoPlanta);
+    divPlanta.appendChild(nomePopular);
+    divPlanta.appendChild(img);
 
-        const nome_popular = document.createElement('h1');
-        nome_popular.className = 'nome_popular';
-        nome_popular.textContent = planta.nome;
+    return divPlanta;
+}
 
-        const img = document.createElement('img');
-        img.className = 'img_planta';
-        img.src = planta.imagem // Assumindo que planta.imagem é a URL da imagem
-        console.log(planta.imagem);
+async function buscarPersonalizada() {
+    const queryKeyword = document.getElementById('busca_filtro').value.trim().toLowerCase();
+    const jwtToken = JSON.parse(localStorage.getItem('jwtToken'));
+    if (!jwtToken) {
+    // Se o token não estiver presente, exibe um alerta e redireciona para a página de login
+    window.alert('Você precisa estar logado para acessar esta página. Você será para a página de login.');
+    window.location.href = '../views/login.html';
+    return;
+}
 
-        divPlanta.appendChild(nome_popular);
-        divPlanta.appendChild(nome_cientifico);
-        divPlanta.appendChild(img);
-        elementosSwiper.push(divPlanta);
-    });
+    try {
+        const response = await fetch('https://etnobook-api.onrender.com/plantas/filter', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                nome: queryKeyword
+            })
+        });
 
-    return elementosSwiper;
+        if (response.ok) {
+            const data = await response.json();
+            console.log(data); // Exibe a resposta do servidor em formato JSON
+
+            // Faça algo com os dados, por exemplo, renderize na tela
+            renderizarDados(data);
+        } else {
+            const errorMsg = await response.text();
+            alert(errorMsg); // Exibe a mensagem de erro do servidor para falha
+            console.log("Nenhuma planta encontrada");
+        }
+    } catch (error) {
+        console.error('Erro ao buscar dados:', error);
+    }
+}
+
+function renderizarDados(data) {
+    // Armazena os dados no localStorage
+    localStorage.setItem('dadosBuscados', JSON.stringify(data));
+
+    // Redireciona para a próxima página
+    window.location.href = '../views/filtro-busca.html';
 }

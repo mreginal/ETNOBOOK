@@ -243,6 +243,7 @@ nav a{
     width: 45%;
 }
 
+
 /*Parte referente ao swiper*/
 
 .swiper-wrapper {
@@ -283,6 +284,7 @@ nav a{
     border-radius: 10px;
     padding: 15px;
 }
+
 .img_planta{
     margin-top: 10px;
     width: 90%;
@@ -304,10 +306,6 @@ nav a{
     font-size: 14px;
 }
 
-.img-container{
-    width: 300px;
-}
-
 .detalhes-container p{
     display: flex;
     flex-direction: column;
@@ -323,6 +321,18 @@ nav a{
     color: var(--cor6);
 }
 
+/*Busca*/
+
+.item{
+    line-height: 20px;
+}
+
+.img_planta_busca{
+    display: block;
+    margin: auto;
+    text-align: center;
+    width: 150px;
+}
 
 .fixar-rodape{
     background-color: var(--cor7);
@@ -337,3 +347,21 @@ nav a{
     left: 0;
     padding-top:15px ;
 }
+
+/* Adicione estas regras CSS ao seu arquivo de estilo (main.css) ou insira diretamente no cabeçalho HTML */
+
+
+.item {
+    border-bottom: 1px solid #9c9999; /* Adicione uma borda inferior com a cor desejada */
+    padding-bottom: 10px; /* Adicione espaçamento interno na parte inferior conforme necessário */
+    margin-bottom: 10px; /* Adicione margem na parte inferior conforme necessário */
+}
+
+/* Adicione uma regra para a última .item para remover a borda inferior */
+.item:last-child {
+    border-bottom: none;
+    margin-bottom: 0; /* Se desejar remover a margem na última .item */
+}
+
+
+
